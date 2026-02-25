@@ -7,15 +7,21 @@
     <%- include("../shared/includes/header") %>
     <main>
         <h1>Create new account</h1>
+        <% if (sessionData.errorMessage) { %>
+            <section class="alert">
+                <h2>Invalid input!</h2>
+                <p><%= sessionData.errorMessage %></p>
+            </section>
+        <% } %>
         <form action="/signup" method="POST">
             <input type="hidden" name="_csrf" value="<%= csrfToken %>">
             <p>
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
+                <input type="email" id="email" name="email" value="<%= sessionData.email %>" required>
             </p>
             <p>
                 <label for="confirm-email">Confirm Email</label>
-                <input type="email" id="confirm-email" name="confirm-email" required>
+                <input type="email" id="confirm-email" name="confirm-email" value="<%= sessionData.confirmEmail %>" required>
             </p>
             <p>
                 <label for="password">Password</label>
@@ -24,19 +30,19 @@
             <hr>
             <p>
                 <label for="full-name">Full Name</label>
-                <input type="text" id="full-name" name="full-name" required>
+                <input type="text" id="full-name" name="full-name" value="<%= sessionData.fullName %>" required>
             </p>
             <p>
                 <label for="street">Street</label>
-                <input type="text" id="street" name="street" required>
+                <input type="text" id="street" name="street" value="<%= sessionData.street %>" required>
             </p>
             <p>
                 <label for="postal-code">Postal Code</label>
-                <input type="text" id="postal" name="postal" required>
+                <input type="text" id="postal" name="postal" value="<%= sessionData.postal %>" required>
             </p>
             <p>
                 <label for="city">City</label>
-                <input type="text" id="city" name="city" required>
+                <input type="text" id="city" name="city" value="<%= sessionData.city %>" required>
             </p>
             <button class="btn">Create Account</button>
             <p id="switch-form"><a href="/login">Login instead</a></p>
