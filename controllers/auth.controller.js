@@ -17,6 +17,13 @@ async function signup(req, res) {
     req.body.city,
   );
 
+try {
+  await user.signup();
+} catch (error) {
+  next(error);
+  return;
+}
+
   await user.signup();
   res.redirect("/login");
 }
@@ -27,9 +34,15 @@ function getLogin(req, res) {
   });
 }
 
-async function login(req, res) {
+async function login(req, res, next) {
   const user = new User(req.body.email, req.body.password);
-  const existingUser = await user.getUserWithSameEmail();
+  let existingUser;
+  try {
+    existingUser = await user.getUserWithSameEmail();
+  } catch (error) {
+    next(error);
+    return;
+  }
 
   if (!existingUser) {
     return res.redirect("/login");
@@ -58,5 +71,5 @@ module.exports = {
   getLogin: getLogin,
   signup: signup,
   login: login,
-  logout: logout 
+  logout: logout
 };
