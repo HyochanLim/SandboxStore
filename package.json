@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "bcrypt": "^6.0.0",
+    "csurf": "^1.11.0",
     "ejs": "^4.0.1",
     "express": "^5.2.1",
     "mongodb": "^7.1.0"
