@@ -1,0 +1,29 @@
+{
+  "name": "sandboxstore",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/HyochanLim/SandboxStore#readme",
+  "bugs": {
+    "url": "https://github.com/HyochanLim/SandboxStore/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HyochanLim/SandboxStore.git"
+  },
+  "license": "MIT",
+  "author": "hyochanLim",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "ejs": "^4.0.1",
+    "express": "^5.2.1",
+    "mongodb": "^7.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
