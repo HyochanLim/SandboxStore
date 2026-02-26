@@ -38,6 +38,7 @@ class User {
             password: hashedPassword,
             fullname: this.fullname,
             address: this.address,
+            isAdmin: false,
         });
     }
 }

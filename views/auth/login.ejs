@@ -13,7 +13,7 @@
                 <p><%= errorMessage %></p>
             </section>
         <% } %>
-        <form action="/login" method="POST">
+        <form class="auth-form" action="/login" method="POST">
             <input type="hidden" name="_csrf" value="<%= csrfToken %>">
             <p>
                 <label for="email">Email</label>
