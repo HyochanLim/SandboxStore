@@ -80,13 +80,9 @@ main {
     width: 100%;
     height: calc(100vh - 5rem);
     background-color: var(--color-gray-700);
-    display: none;
+    display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-#mobile-menu.open {
-    display: flex;
 }
 
 #mobile-menu nav {
