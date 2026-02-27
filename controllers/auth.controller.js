@@ -135,7 +135,7 @@ async function login(req, res, next) {
         return res.redirect("/login");
       },
     );
-    return res.redirect("/login");
+    return;
   }
 
   const passwordIsCorrect = await user.hasMatchingPassword(
@@ -155,7 +155,7 @@ async function login(req, res, next) {
         return res.redirect("/login");
       },
     );
-    return res.redirect("/login");
+    return;
   }
 
   authUtil.createUserSession(req, existingUser, function () {
