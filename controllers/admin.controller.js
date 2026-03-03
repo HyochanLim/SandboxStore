@@ -1,19 +1,32 @@
+const Product = require("../models/product.model");
+
 function getProducts(req, res) {
-    res.render('admin/products/all-products', {
-        pageTitle: 'All Products',
-    });
+  res.render("admin/products/all-products", {
+    pageTitle: "All Products",
+  });
 }
 
 function getNewProduct(req, res) {
-    res.render('admin/products/new-products', {
-        pageTitle: 'Add New Product',
-    });
+  res.render("admin/products/new-products", {
+    pageTitle: "Add New Product",
+  });
 }
 
-function createNewProduct(req, res) {
+async function createNewProduct(req, res, next) {
+  const product = new Product({
+    ...req.body,
+    image: req.file.filename,
+  });
 
+  try {
+    await product.save();
+  } catch (error) {
+    next(error);
+    return;
+  }
+
+  res.redirect("/admin/products");
 }
-
 
 module.exports = {
   getProducts: getProducts,

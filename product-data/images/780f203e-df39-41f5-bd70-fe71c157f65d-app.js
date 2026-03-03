@@ -25,10 +25,6 @@ app.set("views", path.join(__dirname, "views"));
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: false }));
 app.use(expressSession(sessionConfig));
-app.use(function (req, res, next) {
-  res.set("Cache-Control", "no-store");
-  next();
-});
 app.use(csrf());
 app.use(checkAuthStatus);
 app.use(addCsrfTokenMiddleware);
