@@ -1,8 +1,9 @@
-<%- include("../../shared/includes/head", { pageTitle: "All Products" }) %>
+<%- include("../../shared/includes/head", { pageTitle: product.title }) %>
 <link rel="stylesheet" href="/styles/base.css">
 <link rel="stylesheet" href="/styles/forms.css">
 <link rel="stylesheet" href="/styles/auth.css">
 <link rel="stylesheet" href="/styles/products.css">
+<script src="/scripts/cart.management.js" defer></script>
 </head>
 <body>
     <%- include("../../shared/includes/header") %>
@@ -12,7 +13,11 @@
         <div id="product-info">
             <h1><%= product.title %></h1>
             <p>$<%= product.price %></p>
-            <button>Add to Cart</button>
+            <form action="/cart/items" method="POST">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <input type="hidden" name="productId" value="<%= product.id %>">
+                <button class="btn" data-productid="<%= product.id %>" data-csrf="<%= locals.csrfToken %>">Add to Cart</button>
+            </form>
         </div>
        </header>
 

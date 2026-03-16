@@ -3,10 +3,12 @@
         <a href="/products">Shop</a>
     </li>
 
+    <li>
+        <a href="/cart">Cart <span class="badge"><%= locals.cart ? locals.cart.totalQuantity : 0 %></span>
+        </a>
+    </li>
+
     <% if (isAuth) { %>
-        <li>
-            <a href="/cart">Cart</a>
-        </li>
         <li>
             <a href="/orders">Orders</a>
         </li>

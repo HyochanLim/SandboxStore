@@ -1,0 +1,30 @@
+<%- include("../../shared/includes/head", { pageTitle: "Your Cart" }) %>
+<link rel="stylesheet" href="/styles/base.css">
+<link rel="stylesheet" href="/styles/products.css">
+</head>
+<body>
+    <%- include("../../shared/includes/header") %>
+
+    <main>
+        <h1>Your Cart</h1>
+
+        <% if (!cartItems || cartItems.length === 0) { %>
+            <p>Your cart is empty.</p>
+        <% } else { %>
+            <section>
+                <ul>
+                    <% for (const item of cartItems) { %>
+                        <li>
+                            <p>
+                                <strong><%= item.product.title %></strong>
+                                x <%= item.quantity %> - $<%= item.totalPrice.toFixed(2) %>
+                            </p>
+                        </li>
+                    <% } %>
+                </ul>
+                <p><strong>Total: $<%= totalPrice.toFixed(2) %></strong></p>
+            </section>
+        <% } %>
+    </main>
+
+    <%- include("../../shared/includes/footer") %>
