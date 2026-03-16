@@ -1,21 +1,28 @@
-const deleteProductButtonElement = document.querySelectorAll(".product-item button");
+const deleteProductButtonElements = document.querySelectorAll(".product-item button");
 
 async function deleteProduct(event) {
-    const buttonElement = event.target
+    const buttonElement = event.target;
     const productId = buttonElement.dataset.productid;
     const csrfToken = buttonElement.dataset.csrf;
 
     const response = await fetch('/admin/products/' + productId + '?_csrf=' + csrfToken, {
         method: 'DELETE',
-    })
+        headers: {
+            'CSRF-Token': csrfToken,
+        },
+    });
+
     if (!response.ok) {
         alert('Something went wrong');
         return;
     }
 
-    buttonElement.parentElement.parentElement.parentElement.parentElement.remove();
+    const productListItemElement = buttonElement.closest('li');
+    if (productListItemElement) {
+        productListItemElement.remove();
+    }
 }
 
-for (const deleteProductButtonElement of deleteProductButtonElement) {
+for (const deleteProductButtonElement of deleteProductButtonElements) {
     deleteProductButtonElement.addEventListener("click", deleteProduct);
 }
