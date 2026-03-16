@@ -3,6 +3,7 @@
 <link rel="stylesheet" href="/styles/forms.css">
 <link rel="stylesheet" href="/styles/auth.css">
 <link rel="stylesheet" href="/styles/cart.css">
+<script src="/scripts/cart-item-management.js" defer></script>
 </head>
 <body>
     <%- include("../../shared/includes/header") %>
@@ -21,7 +22,7 @@
             </ul>
 
             <div id="cart-total">
-                <p>Total: $<%= totalPrice.toFixed(2) %></p>
+                <p>Total: $<span id="cart-total-price"><%= totalPrice.toFixed(2) %></span></p>
                 <button class="btn">Buy products</button>
             </div>
         <% } %>

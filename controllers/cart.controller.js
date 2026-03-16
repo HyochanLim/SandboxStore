@@ -39,7 +39,29 @@ async function addCartItem(req, res, next) {
     res.redirect("/cart");
 }
 
+function updateCartItem(req, res) {
+    const cart = res.locals.cart;
+    const newQuantity = +req.body.newQuantity;
+    const updateItemData = cart.updateItem(req.body.productId, newQuantity);
+
+    if (!updateItemData) {
+        return res.status(404).json({ message: "Cart item not found." });
+    }
+
+    req.session.cart = cart;
+
+    res.json({
+        message: "Cart updated!",
+        updatedCartData: {
+            newTotalQuantity: updateItemData.newTotalQuantity,
+            newTotalPrice: updateItemData.newTotalPrice,
+            updatedItemPrice: updateItemData.updatedItemPrice,
+        },
+    });
+}
+
 module.exports = {
     getCart: getCart,
     addCartItem: addCartItem,
+    updateCartItem: updateCartItem,
 };
