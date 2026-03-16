@@ -1,5 +1,12 @@
 const Product = require("../models/product.model");
 
+function getCart(req, res) {
+    res.render("customer/cart/cart", {
+        cartItems: res.locals.cart.items,
+        totalPrice: res.locals.cart.totalPrice,
+    });
+}
+
 async function addCartItem(req, res, next) {
     let product;
     try {
@@ -30,13 +37,6 @@ async function addCartItem(req, res, next) {
     }
 
     res.redirect("/cart");
-}
-
-function getCart(req, res) {
-    res.render("customer/cart/cart", {
-        cartItems: res.locals.cart.items,
-        totalPrice: res.locals.cart.totalPrice,
-    });
 }
 
 module.exports = {
