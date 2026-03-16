@@ -1,0 +1,13 @@
+<%- include("./includes/head", { pageTitle: "An error occured" }) %>
+<link rel="stylesheet" href="/styles/base.css">
+<link rel="stylesheet" href="/styles/forms.css">
+<link rel="stylesheet" href="/styles/auth.css">
+</head>
+<body>
+    <%- include("./includes/header") %>
+    <main>
+        <h1>You are not authorized</h1>
+        <p>We're sorry, but you are not authorized to access this page.</p>
+        <p><a href="/login" class="btn">Login</a></p>
+    </main>
+    <%- include("./includes/footer") %>
