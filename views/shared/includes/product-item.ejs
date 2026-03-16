@@ -5,7 +5,7 @@
     <h2><%= product.title %></h2>
 
     <div class="product-item-actions">
-      <% if (locals.isAdmin) { %>
+      <% if (locals.isAdminView) { %>
         <a class="btn btn-alt" href="/admin/products/<%= product.id %>" data-csrf="<%= locals.csrfToken %>">
           View & Edit
         </a>
