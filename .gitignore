@@ -31,6 +31,9 @@ build/
 .temp/
 .cache/
 
+# Local product images
+product-data/images/
+
 # OS / editor files
 .DS_Store
 Thumbs.db
